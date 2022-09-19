@@ -17,4 +17,5 @@ jobs:
           dir
           pwd
           tree
+          dotnet build -c Release -o publish
           ISCC.exe .\install\inno\inno.iss

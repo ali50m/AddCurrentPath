@@ -6,6 +6,7 @@
 #define MyAppPublisher "ali50m"
 #define MyAppURL "https://github.com/ali50m/AddCurrentPath"
 #define MyAppExeName "AddCurrentPath.exe"
+#define PublishPath "..\..\publish"
 
 [Setup]
 ; NOTE: The value of AppId uniquely identifies this application. Do not use the same AppId value in installers for other applications.
@@ -34,12 +35,12 @@ WizardStyle=modern
 Name: "english"; MessagesFile: "compiler:Default.isl"
 
 [Files]
-Source: "C:\Users\Liu\source\repos\AddCurrentPath\AddCurrentPath\bin\Release\net6.0\{#MyAppExeName}"; DestDir: "{app}"; Flags: ignoreversion
-Source: "C:\Users\Liu\source\repos\AddCurrentPath\AddCurrentPath\bin\Release\net6.0\AddCurrentPath.deps.json"; DestDir: "{app}"; Flags: ignoreversion
-Source: "C:\Users\Liu\source\repos\AddCurrentPath\AddCurrentPath\bin\Release\net6.0\AddCurrentPath.dll"; DestDir: "{app}"; Flags: ignoreversion
-Source: "C:\Users\Liu\source\repos\AddCurrentPath\AddCurrentPath\bin\Release\net6.0\AddCurrentPath.pdb"; DestDir: "{app}"; Flags: ignoreversion
-Source: "C:\Users\Liu\source\repos\AddCurrentPath\AddCurrentPath\bin\Release\net6.0\AddCurrentPath.runtimeconfig.json"; DestDir: "{app}"; Flags: ignoreversion
-Source: "C:\Users\Liu\source\repos\AddCurrentPath\AddCurrentPath\bin\Release\net6.0\CommandLine.dll"; DestDir: "{app}"; Flags: ignoreversion
+Source: "{#PublishPath}\{#MyAppExeName}"; DestDir: "{app}"; Flags: ignoreversion
+Source: "{#PublishPath}\AddCurrentPath.deps.json"; DestDir: "{app}"; Flags: ignoreversion
+Source: "{#PublishPath}\AddCurrentPath.dll"; DestDir: "{app}"; Flags: ignoreversion
+Source: "{#PublishPath}\AddCurrentPath.pdb"; DestDir: "{app}"; Flags: ignoreversion
+Source: "{#PublishPath}\AddCurrentPath.runtimeconfig.json"; DestDir: "{app}"; Flags: ignoreversion
+Source: "{#PublishPath}\CommandLine.dll"; DestDir: "{app}"; Flags: ignoreversion
 ; NOTE: Don't use "Flags: ignoreversion" on any shared system files
 
 [Icons]
