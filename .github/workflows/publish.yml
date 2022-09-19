@@ -12,7 +12,7 @@ on:
 env:
   DOTNET_VERSION: '6.0.x'
   RID: 'win-x86'
-  VERSION_PROJECT_PATH: 'AddCurrentPath/AddCurrentPath.csproj'
+  VERSION_PROJECT_PATH: '${{ github.event.repository.name }}/${{ github.event.repository.name }}.csproj'
   
 jobs:
   release:
