@@ -11,13 +11,12 @@ on:
 
 env:
   DOTNET_VERSION: '6.0.x'
-  BUILD_MACHINE: 'windows-latest'
   RID: 'win-x86'
   VERSION_PROJECT_PATH: 'AddCurrentPath/AddCurrentPath.csproj'
   
 jobs:
   release:
-    runs-on: ${{ env.BUILD_MACHINE }}
+    runs-on: windows-latest
     permissions:
       contents: write
         
