@@ -13,4 +13,8 @@ jobs:
       - uses: actions/checkout@v2
 
       - name: test inno
-        run: ISCC.exe .\packages\inno\inno.iss
+        run: |
+          dir
+          pwd
+          tree
+          ISCC.exe .\packages\inno\inno.iss
