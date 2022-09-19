@@ -5,6 +5,7 @@
         <TargetFramework>net6.0</TargetFramework>
         <Nullable>enable</Nullable>
         <AssemblyVersion>1.0.8</AssemblyVersion>
+        <Version>$(AssemblyVersion)</Version>
         <RunAnalyzersDuringBuild>False</RunAnalyzersDuringBuild>
     </PropertyGroup>
 
