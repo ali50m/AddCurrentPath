@@ -18,11 +18,18 @@ jobs:
     steps:
       - uses: actions/checkout@v2
 
+      - uses: kzrnm/get-net-sdk-project-versions-action@v1
+        id: get-version
+        with:
+          proj-path: ${{ env.VERSION_PROJECT_PATH }}
+          
       - name: dotnet build
         run: dotnet publish --configuration Release --runtime win-x86 --self-contained False --output publish -p:PublishSingleFile=true -p:DebugType=None -p:DebugSymbols=false
       
       - name: create inno installer
-        run: ISCC.exe ".\install\inno\inno.iss"
+        run: |
+          ISCC.exe ".\install\inno\inno.iss" \
+            -DMyAppVersion=${{ steps.get-version.outputs.assembly-version }} \
 
       - name: upload artifacts
         shell: bash
