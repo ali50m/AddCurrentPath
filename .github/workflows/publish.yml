@@ -1,0 +1,25 @@
+name: '[Release] On publish Tag'
+
+on:
+  push:
+    # Pattern matched against refs/tags
+    tags:
+      - '**'           # Push events to every tag including hierarchical tags like v1.0/beta
+
+  # Allows you to run this workflow manually from the Actions tab
+  workflow_dispatch:
+
+jobs:
+  release:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v2
+
+      - name: upload artifacts
+        # if: ${{ github.event_name == 'release' && github.event.action == 'publish' }}
+        shell: bash
+        working-directory: ./out
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        run: |
+          echo publish
