@@ -17,4 +17,4 @@ jobs:
           dir
           pwd
           tree
-          ISCC.exe .\packages\inno\inno.iss
+          ISCC.exe .\install\inno\inno.iss
