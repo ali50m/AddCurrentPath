@@ -2,7 +2,7 @@
 ; SEE THE DOCUMENTATION FOR DETAILS ON CREATING INNO SETUP SCRIPT FILES!
 
 #define MyAppName "AddCurrentPath"
-#define MyAppVersion "1.0.2"
+#define MyAppVersion "1.0.3"
 #define MyAppPublisher "ali50m"
 #define MyAppURL "https://github.com/ali50m/AddCurrentPath"
 #define MyAppExeName "AddCurrentPath.exe"
