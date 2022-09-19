@@ -1,0 +1,14 @@
+name: 'test inno package'
+
+on:
+  workflow_dispatch:
+  
+jobs:
+  release:
+    runs-on: windows-latest
+    permissions:
+      contents: write
+        
+    steps:
+      - name: test inno
+        run: issc.exe
