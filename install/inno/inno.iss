@@ -7,6 +7,7 @@
 #define MyAppURL "https://github.com/ali50m/AddCurrentPath"
 #define MyAppExeName "AddCurrentPath.exe"
 #define PublishPath "..\..\publish"
+#define MyLicenseFile "..\..\LICENSE"
 
 [Setup]
 ; NOTE: The value of AppId uniquely identifies this application. Do not use the same AppId value in installers for other applications.
@@ -23,7 +24,7 @@ DefaultDirName={autopf}\{#MyAppName}
 DisableDirPage=yes
 DefaultGroupName={#MyAppName}
 DisableProgramGroupPage=yes
-LicenseFile=..\..\LICENSE
+LicenseFile={#MyLicenseFile}
 ; Remove the following line to run in administrative install mode (install for all users.)
 PrivilegesRequired=lowest
 OutputBaseFilename=AddCurrentPath.Setup
@@ -36,11 +37,6 @@ Name: "english"; MessagesFile: "compiler:Default.isl"
 
 [Files]
 Source: "{#PublishPath}\{#MyAppExeName}"; DestDir: "{app}"; Flags: ignoreversion
-Source: "{#PublishPath}\AddCurrentPath.deps.json"; DestDir: "{app}"; Flags: ignoreversion
-Source: "{#PublishPath}\AddCurrentPath.dll"; DestDir: "{app}"; Flags: ignoreversion
-Source: "{#PublishPath}\AddCurrentPath.pdb"; DestDir: "{app}"; Flags: ignoreversion
-Source: "{#PublishPath}\AddCurrentPath.runtimeconfig.json"; DestDir: "{app}"; Flags: ignoreversion
-Source: "{#PublishPath}\CommandLine.dll"; DestDir: "{app}"; Flags: ignoreversion
 ; NOTE: Don't use "Flags: ignoreversion" on any shared system files
 
 [Icons]
