@@ -11,4 +11,4 @@ jobs:
         
     steps:
       - name: test inno
-        run: issc.exe
+        run: ISCC.exe
