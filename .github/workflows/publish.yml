@@ -36,7 +36,7 @@ jobs:
           dotnet-version: ${{ env.DOTNET_VERSION }}
           
       - name: publish release
-          dotnet publish --configuration Release --runtime ${{ matrix.RID }} --self-contained false --output publish/${{ matrix.RID }} -p:PublishSingleFile=true -p:Version=${{ steps.get-version.outputs.assembly-version }} --verbosity normal
+        run: dotnet publish --configuration Release --runtime ${{ matrix.RID }} --self-contained false --output publish/${{ matrix.RID }} -p:PublishSingleFile=true -p:Version=${{ steps.get-version.outputs.assembly-version }} --verbosity normal
       
       - name: upload artifacts
         shell: bash
