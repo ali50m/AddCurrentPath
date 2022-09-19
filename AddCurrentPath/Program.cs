@@ -8,6 +8,8 @@ internal static class Program
     private static void Main()
     {
         Console.WriteLine($"Current Path is {AppContext.BaseDirectory}");
+        Console.WriteLine("More features will coming soon!");
+        Console.WriteLine("Press [Enter] to quit");
         Console.ReadLine();
 
         // const EnvironmentVariableTarget environmentVariableTarget = EnvironmentVariableTarget.User;
