@@ -10,7 +10,12 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "SolutionFiles", "SolutionFi
 		.gitignore = .gitignore
 		README.md = README.md
 		.github\workflows\publish.yml = .github\workflows\publish.yml
+	EndProjectSection
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "inno", "inno", "{40604AE4-B062-431F-8124-51D5C2764E31}"
+	ProjectSection(SolutionItems) = preProject
 		.github\workflows\inno.yml = .github\workflows\inno.yml
+		packages\inno\inno.iss = packages\inno\inno.iss
 	EndProjectSection
 EndProject
 Global
@@ -26,5 +31,8 @@ Global
 		{2C5332BF-2C70-4CE6-8AFA-D834A6F84537}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{2C5332BF-2C70-4CE6-8AFA-D834A6F84537}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{2C5332BF-2C70-4CE6-8AFA-D834A6F84537}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(NestedProjects) = preSolution
+		{40604AE4-B062-431F-8124-51D5C2764E31} = {9D5981F5-9083-482A-BE9D-D18FA676E8CC}
 	EndGlobalSection
 EndGlobal
