@@ -32,8 +32,7 @@ jobs:
       
       - name: create inno installer
         run: |
-          ISCC.exe ".\install\inno\inno.iss" \
-            -DMyAppVersion=${{ steps.get-version.outputs.assembly-version }} \
+          ISCC.exe ".\install\inno\inno.iss" /DMyAppVersion=${{ steps.get-version.outputs.assembly-version }}"
 
       - name: upload artifacts
         shell: bash
