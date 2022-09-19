@@ -9,17 +9,44 @@ on:
   # Allows you to run this workflow manually from the Actions tab
   workflow_dispatch:
 
+env:
+  DOTNET_VERSION: '6.0.x'
+  VERSION_PROJECT_PATH: 'AddCurrentPath/AddCurrentPath.csproj'
+  
 jobs:
   release:
-    runs-on: ubuntu-latest
+    runs-on: ${{ matrix.os }}
+    permissions:
+      contents: write
+    strategy:
+      matrix:
+        RID: [win-x86]
+        
     steps:
       - uses: actions/checkout@v2
 
+      - uses: kzrnm/get-net-sdk-project-versions-action@v1
+        id: get-version
+        with:
+          proj-path: ${{ env.VERSION_PROJECT_PATH }}
+
+      - name: Setup .NET
+        uses: actions/setup-dotnet@v2
+        with:
+          dotnet-version: ${{ env.DOTNET_VERSION }}
+          
+      - name: publish release
+          dotnet publish --configuration Release --runtime ${{ matrix.RID }} --self-contained false --output publish/${{ matrix.RID }} -p:PublishSingleFile=true -p:Version=${{ steps.get-version.outputs.assembly-version }} --verbosity normal
+      
       - name: upload artifacts
-        # if: ${{ github.event_name == 'release' && github.event.action == 'publish' }}
         shell: bash
-        working-directory: .
+        working-directory: publish/${{ matrix.RID }}
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         run: |
-          echo publish
+          gh release create ${{github.ref_name}}
+          for filename in ./* ; do
+            [ -f "$filename" ] || continue
+            echo "Processing $filename ..."
+            gh release upload ${{github.ref_name}} $filename
+          done
