@@ -14,8 +14,8 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "SolutionFiles", "SolutionFi
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "inno", "inno", "{40604AE4-B062-431F-8124-51D5C2764E31}"
 	ProjectSection(SolutionItems) = preProject
+		install\inno\inno.iss = install\inno\inno.iss
 		.github\workflows\inno.yml = .github\workflows\inno.yml
-		packages\inno\inno.iss = packages\inno\inno.iss
 	EndProjectSection
 EndProject
 Global

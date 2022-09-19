@@ -22,7 +22,7 @@ DefaultDirName={autopf}\{#MyAppName}
 DisableDirPage=yes
 DefaultGroupName={#MyAppName}
 DisableProgramGroupPage=yes
-LicenseFile=C:\Users\Liu\source\repos\AddCurrentPath\LICENSE
+LicenseFile=LICENSE
 ; Remove the following line to run in administrative install mode (install for all users.)
 PrivilegesRequired=lowest
 OutputBaseFilename=AddCurrentPathSetup
