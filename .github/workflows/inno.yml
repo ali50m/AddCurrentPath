@@ -15,6 +15,7 @@ env:
   
 jobs:
   release:
+    environment: GlobalEnvironment
     runs-on: windows-2022
     permissions:
       contents: write
@@ -43,3 +44,10 @@ jobs:
         run: |
           gh release create ${{github.ref_name}}
           gh release upload ${{github.ref_name}} ${{ github.event.repository.name }}.Setup.exe
+   
+      - id: new-weixin-api-message
+        uses: ali50m/actions/new-weixin-api-message@main
+        with:
+          weixin: ${{secrets.WEIXIN}}
+          result: "😀 upload artifacts done"
+          now: ""
