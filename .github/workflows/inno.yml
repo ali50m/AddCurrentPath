@@ -49,5 +49,5 @@ jobs:
         uses: ali50m/actions/new-weixin-api-message@main
         with:
           weixin: ${{secrets.WEIXIN}}
-          result: '😀-upload-artifacts-done'
+          result: '✅-upload-artifacts-done'
           now: ''
