@@ -1,6 +1,8 @@
 # AddCurrentPath
 Add Current Path to EnvironmentVariable
 
+[![States](https://github.com/ali50m/AddCurrentPath/actions/workflows/inno.yml/badge.svg)](https://github.com/ali50m/AddCurrentPath/actions/workflows/inno.yml)
+
 ## push with tag
 ```
 git tag <tagname>
