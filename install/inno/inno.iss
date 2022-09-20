@@ -40,6 +40,9 @@ Name: "english"; MessagesFile: "compiler:Default.isl"
 
 [Files]
 Source: "{#PublishPath}\{#MyAppExeName}"; DestDir: "{app}"; Flags: ignoreversion
+Source: "{#PublishPath}\{#MyAppName}.deps.json"; DestDir: "{app}"; Flags: ignoreversion
+Source: "{#PublishPath}\{#MyAppName}.dll"; DestDir: "{app}"; Flags: ignoreversion
+Source: "{#PublishPath}\{#MyAppName}.runtimeconfig.json"; DestDir: "{app}"; Flags: ignoreversion
 ; NOTE: Don't use "Flags: ignoreversion" on any shared system files
 
 [Icons]

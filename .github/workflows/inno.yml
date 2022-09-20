@@ -28,7 +28,8 @@ jobs:
           proj-path: ${{ env.VERSION_PROJECT_PATH }}
           
       - name: dotnet build
-        run: dotnet publish --configuration Release --runtime win-x86 --self-contained False --output publish -p:PublishSingleFile=true -p:DebugType=None -p:DebugSymbols=false
+        run: dotnet publish --configuration Release --runtime win-x86 --self-contained False --output publish -p:DebugType=None -p:DebugSymbols=false
+        # run: dotnet publish --configuration Release --runtime win-x86 --self-contained False --output publish -p:PublishSingleFile=true -p:DebugType=None -p:DebugSymbols=false
       
       - name: create inno installer
         run: |
