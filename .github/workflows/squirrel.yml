@@ -1,10 +1,10 @@
-name: 'test inno package'
+name: 'test squirrel package'
 
 on:
   push:
     # Pattern matched against refs/tags
-    # tags:
-    #   - '**'           # Push events to every tag including hierarchical tags like v1.0/beta
+    tags:
+      - '**'           # Push events to every tag including hierarchical tags like v1.0/beta
 
   # Allows you to run this workflow manually from the Actions tab
   workflow_dispatch:
@@ -32,24 +32,31 @@ jobs:
       - name: dotnet build
         run: dotnet publish --configuration Release --runtime win-x86 --self-contained False --output publish -p:DebugType=None -p:DebugSymbols=false
         # run: dotnet publish --configuration Release --runtime win-x86 --self-contained False --output publish -p:PublishSingleFile=true -p:DebugType=None -p:DebugSymbols=false
-      
-      - name: create inno installer
+
+      - name: squirrel package
         run: |
-          ISCC.exe ".\install\inno\inno.iss" "/DMyAppVersion=${{ steps.get-version.outputs.assembly-version }}"
+          dotnet publish --configuration Release --runtime win-x86 --self-contained False --output publish -p:DebugType=None -p:DebugSymbols=false
+          Set-Alias Squirrel ($env:USERPROFILE + "\.nuget\packages\clowd.squirrel\2.9.42\tools\Squirrel.exe");
+          Squirrel pack --framework net6.0.2 --packId "${{ env.REPO_NAME }}" --packVersion "${{ steps.get-version.outputs.assembly-version }}" --packAuthors "ali50m" --packDir ".\publish" --allowUnaware
+        # run: dotnet publish --configuration Release --runtime win-x86 --self-contained False --output publish -p:PublishSingleFile=true -p:DebugType=None -p:DebugSymbols=false
 
       - name: upload artifacts
         shell: bash
-        working-directory: install/inno/output
+        working-directory: Releases
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         run: |
           gh release create ${{github.ref_name}}
-          gh release upload ${{github.ref_name}} ${{ github.event.repository.name }}.Setup.exe
+          for filename in ./* ; do
+            [ -f "$filename" ] || continue
+            echo "Processing $filename ..."
+            gh release upload ${{github.ref_name}} $filename
+          done
    
-      - uses: vedantmgoyal2009/winget-releaser@latest
-        with:
-          identifier: ali50m.${{ env.REPO_NAME }}
-          token: ${{ secrets.WINGET_TOKEN }}
+      # - uses: vedantmgoyal2009/winget-releaser@latest
+      #   with:
+      #     identifier: ali50m.${{ env.REPO_NAME }}
+      #     token: ${{ secrets.WINGET_TOKEN }}
 
       - id: new-weixin-api-message
         uses: ali50m/actions/new-weixin-api-message@main
