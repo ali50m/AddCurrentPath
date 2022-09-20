@@ -1,7 +1,7 @@
 name: 'test inno package'
 
 on:
-  push:
+  # push:
     # Pattern matched against refs/tags
     # tags:
     #   - '**'           # Push events to every tag including hierarchical tags like v1.0/beta
