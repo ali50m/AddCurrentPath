@@ -1,4 +1,4 @@
-name: 'test squirrel package'
+name: squirrel
 
 on:
   push:
