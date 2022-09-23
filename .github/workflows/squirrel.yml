@@ -35,7 +35,8 @@ jobs:
 
       - name: squirrel package
         run: |
-          dotnet publish --configuration Release --runtime win-x86 --self-contained False --output publish -p:DebugType=None -p:DebugSymbols=false
+          dotnet publish --configuration Release --runtime win-x64 --self-contained True --output publish -p:DebugType=None -p:DebugSymbols=false
+        # dotnet publish --configuration Release --runtime win-x86 --self-contained False --output publish -p:DebugType=None -p:DebugSymbols=false
           Set-Alias Squirrel ($env:USERPROFILE + "\.nuget\packages\clowd.squirrel\2.9.42\tools\Squirrel.exe");
           Squirrel pack --framework net6.0.2 --packId "${{ env.REPO_NAME }}" --packVersion "${{ steps.get-version.outputs.assembly-version }}" --packAuthors "ali50m" --packDir ".\publish" --allowUnaware
         # run: dotnet publish --configuration Release --runtime win-x86 --self-contained False --output publish -p:PublishSingleFile=true -p:DebugType=None -p:DebugSymbols=false
