@@ -1,7 +1,7 @@
 # AddCurrentPath
 Add Current Path to EnvironmentVariable
 
-[![squirrel](https://github.com/ali50m/AddCurrentPath/actions/workflows/squirrel.yml/badge.svg?branch=1.3.3)](https://github.com/ali50m/AddCurrentPath/actions/workflows/squirrel.yml)
+[![squirrel](https://github.com/ali50m/AddCurrentPath/actions/workflows/squirrel.yml/badge.svg?branch=1.3.4)](https://github.com/ali50m/AddCurrentPath/actions/workflows/squirrel.yml)
 
 ## push with tag
 ```
@@ -13,7 +13,7 @@ git push --tags
 
 ```
 dotnet publish --configuration Release --runtime win-x86 --self-contained False --output publish -p:PublishSingleFile=true -p:DebugType=None -p:DebugSymbols=false
-wingetcreate.exe new https://github.com/ali50m/AddCurrentPath/releases/download/1.0.8/AddCurrentPath.Setup.exe            
+wingetcreate.exe new https://github.com/ali50m/AddCurrentPath/releases/download/1.3.3/AddCurrentPathSetup.exe            
 winget validate --manifest .\manifests\a\ali50m\AddCurrentPath\1.0.8\                               
 winget install --manifest .\manifests\a\ali50m\AddCurrentPath\1.0.8\                      
 ```
