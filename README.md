@@ -1,7 +1,7 @@
 # AddCurrentPath
 Add Current Path to EnvironmentVariable
 
-[![squirrel](https://github.com/ali50m/AddCurrentPath/actions/workflows/squirrel.yml/badge.svg?branch=1.3.4)](https://github.com/ali50m/AddCurrentPath/actions/workflows/squirrel.yml)
+[![squirrel](https://github.com/ali50m/AddCurrentPath/actions/workflows/squirrel.yml/badge.svg?branch=)](https://github.com/ali50m/AddCurrentPath/actions/workflows/squirrel.yml)
 
 ## push with tag
 ```
