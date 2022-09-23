@@ -17,3 +17,10 @@ wingetcreate.exe new https://github.com/ali50m/AddCurrentPath/releases/download/
 winget validate --manifest .\manifests\a\ali50m\AddCurrentPath\1.0.8\                               
 winget install --manifest .\manifests\a\ali50m\AddCurrentPath\1.0.8\                      
 ```
+
+## squirrel params
+```yml
+InstallerSwitches:
+  Silent: --silent
+  SilentWithProgress: --silent
+```
