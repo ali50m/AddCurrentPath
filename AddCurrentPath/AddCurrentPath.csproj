@@ -6,6 +6,7 @@
         <Nullable>enable</Nullable>
         <AssemblyVersion>1.2.1</AssemblyVersion>
         <Version>$(AssemblyVersion)</Version>
+        <PublishTrimmed>true</PublishTrimmed>
         <RunAnalyzersDuringBuild>False</RunAnalyzersDuringBuild>
     </PropertyGroup>
 
