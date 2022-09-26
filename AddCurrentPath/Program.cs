@@ -2,12 +2,9 @@ using System;
 using System.Diagnostics;
 using System.IO;
 using System.Reflection;
-using System.Runtime.Versioning;
 
 namespace AddCurrentPath;
 
-// 将应用的当前路径加入的用户Path中
-[SupportedOSPlatform("windows")]
 internal static class Program
 {
     private static void Main()
@@ -49,7 +46,6 @@ internal static class Program
 
     private static bool VersionCheck()
     {
-        var newInstalledOrUpdated = false;
         var path = Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.LocalApplicationData),
             Process.GetCurrentProcess().ProcessName);
 
@@ -64,17 +60,14 @@ internal static class Program
         if (File.Exists(versionFilePath) is false)
         {
             File.WriteAllText(versionFilePath, version);
-            newInstalledOrUpdated = true;
-        }
-        else
-        {
-            var content = File.ReadAllText(versionFilePath);
-            if (content != version)
-            {
-                newInstalledOrUpdated = true;
-            }
+            return true;
         }
 
-        return newInstalledOrUpdated;
+        var content = File.ReadAllText(versionFilePath);
+        if (content == version)
+            return false;
+
+        File.WriteAllText(versionFilePath, version);
+        return true;
     }
 }
