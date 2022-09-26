@@ -5,7 +5,7 @@ Add Current Path to EnvironmentVariable
 
 ## push with tag
 ```
-git tag 1.4.2
+git tag 1.4.3
 git push --tags
 ```
 
@@ -13,9 +13,9 @@ git push --tags
 
 ```
 dotnet publish --configuration Release --runtime win-x86 --self-contained False --output publish -p:PublishSingleFile=true -p:DebugType=None -p:DebugSymbols=false
-wingetcreate.exe new https://github.com/ali50m/AddCurrentPath/releases/download/1.4.2/AddCurrentPathSetup.exe            
-winget validate --manifest .\manifests\a\ali50m\AddCurrentPath\1.4.2\                               
-winget install --manifest .\manifests\a\ali50m\AddCurrentPath\1.4.2\                      
+wingetcreate.exe new https://github.com/ali50m/AddCurrentPath/releases/download/1.4.3/AddCurrentPathSetup.exe            
+winget validate --manifest .\manifests\a\ali50m\AddCurrentPath\1.4.3\                               
+winget install --manifest .\manifests\a\ali50m\AddCurrentPath\1.4.3\                      
 ```
 
 ## squirrel params

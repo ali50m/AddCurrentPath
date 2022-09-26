@@ -18,9 +18,6 @@ internal static class Program
             Console.ReadLine();
         }
 
-        // Console.WriteLine("Press [Enter] to quit");
-        // Console.ReadLine();
-
         // const EnvironmentVariableTarget environmentVariableTarget = EnvironmentVariableTarget.User;
         // const string variable = "Path";
         //
@@ -40,8 +37,6 @@ internal static class Program
         //     Environment.SetEnvironmentVariable(variable, value, environmentVariableTarget);
         //     Console.WriteLine("done!");
         // }
-        // Console.WriteLine("Press [Enter] to exit");
-        // Console.ReadLine();
     }
 
     private static bool VersionCheck()
@@ -52,7 +47,7 @@ internal static class Program
         if(Directory.Exists(path) is false)
             Directory.CreateDirectory(path);
 
-        var assembly = Assembly.GetExecutingAssembly();
+        var assembly = Assembly.GetEntryAssembly()!;
         var entryFileInfo = FileVersionInfo.GetVersionInfo(assembly.Location);
         var version = entryFileInfo.ProductVersion;
 
