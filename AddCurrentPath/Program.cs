@@ -1,7 +1,8 @@
 using System;
+using System.Diagnostics;
 using System.IO;
+using System.Reflection;
 using System.Runtime.Versioning;
-using Squirrel;
 
 namespace AddCurrentPath;
 
@@ -9,20 +10,16 @@ namespace AddCurrentPath;
 [SupportedOSPlatform("windows")]
 internal static class Program
 {
-    private static bool _hint;
-
     private static void Main()
     {
-        // run Squirrel first, as the app may exit after these run
-        SquirrelAwareApp.HandleEvents(onEveryRun: OnAppRun);
-
         Console.WriteLine($"Current Path is {Directory.GetCurrentDirectory()}");
         Console.WriteLine("More features will coming soon!");
-        if(_hint is false)
-            return;
 
-        Console.WriteLine("Press [Enter] to quit");
-        Console.ReadLine();
+        if (VersionCheck() is false)
+        {
+            Console.WriteLine("Press [Enter] to quit");
+            Console.ReadLine();
+        }
 
         // Console.WriteLine("Press [Enter] to quit");
         // Console.ReadLine();
@@ -50,9 +47,34 @@ internal static class Program
         // Console.ReadLine();
     }
 
-    private static void OnAppRun(SemanticVersion version, IAppTools tools, bool firstRun)
+    private static bool VersionCheck()
     {
-        if(firstRun is false)
-            _hint = true;
+        var newInstalledOrUpdated = false;
+        var path = Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.LocalApplicationData),
+            Process.GetCurrentProcess().ProcessName);
+
+        if (Directory.Exists(path) is false)
+            Directory.CreateDirectory(path);
+
+        var assembly = Assembly.GetExecutingAssembly();
+        var entryFileInfo = FileVersionInfo.GetVersionInfo(assembly.Location);
+        var version = entryFileInfo.ProductVersion;
+
+        var versionFilePath = Path.Combine(path, "version.txt");
+        if (File.Exists(versionFilePath) is false)
+        {
+            File.WriteAllText(versionFilePath, version);
+            newInstalledOrUpdated = true;
+        }
+        else
+        {
+            var content = File.ReadAllText(versionFilePath);
+            if (content != version)
+            {
+                newInstalledOrUpdated = true;
+            }
+        }
+
+        return newInstalledOrUpdated;
     }
 }
