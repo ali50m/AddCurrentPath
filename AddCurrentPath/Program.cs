@@ -18,7 +18,8 @@ internal static class Program
 
         Console.WriteLine($"Current Path is {Directory.GetCurrentDirectory()}");
         Console.WriteLine("More features will coming soon!");
-        if (_hint is false) return;
+        if(_hint is false)
+            return;
 
         Console.WriteLine("Press [Enter] to quit");
         Console.ReadLine();
@@ -51,6 +52,7 @@ internal static class Program
 
     private static void OnAppRun(SemanticVersion version, IAppTools tools, bool firstRun)
     {
-        if (firstRun is false) _hint = true;
+        if(firstRun is false)
+            _hint = true;
     }
 }
