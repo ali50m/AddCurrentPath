@@ -1,15 +1,28 @@
 using System;
 using System.IO;
+using System.Runtime.Versioning;
+using Squirrel;
 
 namespace AddCurrentPath;
 
 // 将应用的当前路径加入的用户Path中
+[SupportedOSPlatform("windows")]
 internal static class Program
 {
+    private static bool _hint;
+
     private static void Main()
     {
+        // run Squirrel first, as the app may exit after these run
+        SquirrelAwareApp.HandleEvents(onEveryRun: OnAppRun);
+
         Console.WriteLine($"Current Path is {Directory.GetCurrentDirectory()}");
         Console.WriteLine("More features will coming soon!");
+        if (_hint is false) return;
+
+        Console.WriteLine("Press [Enter] to quit");
+        Console.ReadLine();
+
         // Console.WriteLine("Press [Enter] to quit");
         // Console.ReadLine();
 
@@ -34,5 +47,10 @@ internal static class Program
         // }
         // Console.WriteLine("Press [Enter] to exit");
         // Console.ReadLine();
+    }
+
+    private static void OnAppRun(SemanticVersion version, IAppTools tools, bool firstRun)
+    {
+        if (firstRun is false) _hint = true;
     }
 }
