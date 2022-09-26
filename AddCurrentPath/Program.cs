@@ -10,9 +10,9 @@ internal static class Program
     private static void Main()
     {
         Console.WriteLine($"Current Path is {Directory.GetCurrentDirectory()}");
-        Console.WriteLine("More features will coming soon!");
+        Console.WriteLine("More features will be coming soon!");
 
-        if (VersionCheck() is false)
+        if(VersionCheck() is false)
         {
             Console.WriteLine("Press [Enter] to quit");
             Console.ReadLine();
@@ -49,7 +49,7 @@ internal static class Program
         var path = Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.LocalApplicationData),
             Process.GetCurrentProcess().ProcessName);
 
-        if (Directory.Exists(path) is false)
+        if(Directory.Exists(path) is false)
             Directory.CreateDirectory(path);
 
         var assembly = Assembly.GetExecutingAssembly();
@@ -57,14 +57,14 @@ internal static class Program
         var version = entryFileInfo.ProductVersion;
 
         var versionFilePath = Path.Combine(path, "version.txt");
-        if (File.Exists(versionFilePath) is false)
+        if(File.Exists(versionFilePath) is false)
         {
             File.WriteAllText(versionFilePath, version);
             return true;
         }
 
         var content = File.ReadAllText(versionFilePath);
-        if (content == version)
+        if(content == version)
             return false;
 
         File.WriteAllText(versionFilePath, version);
