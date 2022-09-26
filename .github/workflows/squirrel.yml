@@ -36,7 +36,7 @@ jobs:
       - name: squirrel package
         run: |
           Set-Alias Squirrel ($env:USERPROFILE + "\.nuget\packages\clowd.squirrel\2.9.42\tools\Squirrel.exe");
-          Squirrel pack --framework net6.0.2 --packId "${{ env.REPO_NAME }}" --packVersion "${{ steps.get-version.outputs.assembly-version }}" --packAuthors "ali50m" --packDir ".\publish" --allowUnaware
+          Squirrel pack --packId "${{ env.REPO_NAME }}" --packVersion "${{ steps.get-version.outputs.assembly-version }}" --packAuthors "ali50m" --packDir ".\publish" --allowUnaware
 
       - name: upload artifacts
         shell: bash
